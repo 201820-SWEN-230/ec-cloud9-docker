@@ -6,7 +6,7 @@ services:
     image: cloud9
     ports:
       - "0.0.0.0:9090:22"
-      - "0.0.0.0:80:3000"
+      - "0.0.0.0:5000:5000"
     volumes:
       - c9home:/home
     security_opt:
