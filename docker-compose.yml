@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+  cloud9:
+    restart: always   
+    image: cloud9
+    ports:
+      - "0.0.0.0:9090:22"
+      - "0.0.0.0:80:3000"
+    volumes:
+      - c9home:/home
+    security_opt:
+      - seccomp:unconfined
+
+volumes:
+  c9home:
