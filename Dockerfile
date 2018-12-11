@@ -47,3 +47,22 @@ RUN apt-get install -y python3 python3-dev python3-pip python3-setuptools \
 RUN apt-get install -y python3.5-complete
 
 RUN pip3 install flask
+
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
+
+RUN su ubuntu -c "bash ./Miniconda3-latest-Linux-x86_64.sh -b -p /home/ubuntu/miniconda"
+
+RUN rm ./Miniconda3-latest-Linux-x86_64.sh
+
+RUN /home/ubuntu/miniconda/bin/conda install -y cython
+
+RUN /home/ubuntu/miniconda/bin/conda install -y pandas
+
+RUN /home/ubuntu/miniconda/bin/conda install -y scipy
+
+RUN /home/ubuntu/miniconda/bin/conda install -y matplotlib
+
+RUN /home/ubuntu/miniconda/bin/conda install -y jupyter
+
+RUN chown -R ubuntu:ubuntu /home/ubuntu/miniconda
+
