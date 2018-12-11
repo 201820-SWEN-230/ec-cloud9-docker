@@ -58,5 +58,7 @@ ADD conda_create.sh .
 
 RUN su ubuntu -c "bash -v ./conda_create.sh"
 
+RUN echo ". /home/ubuntu/miniconda/etc/profile.d/conda.sh" >> ~ubuntu/.bashrc
 
+RUN echo ". /home/ubuntu/miniconda/bin/activate py36" >> ~ubuntu/.bashrc
 
