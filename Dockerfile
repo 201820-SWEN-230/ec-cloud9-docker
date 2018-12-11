@@ -54,15 +54,9 @@ RUN su ubuntu -c "bash ./Miniconda3-latest-Linux-x86_64.sh -b -p /home/ubuntu/mi
 
 RUN rm ./Miniconda3-latest-Linux-x86_64.sh
 
-RUN /home/ubuntu/miniconda/bin/conda install -y cython
+ADD conda_create.sh .
 
-RUN /home/ubuntu/miniconda/bin/conda install -y pandas
+RUN su ubuntu -c "bash -v ./conda_create.sh"
 
-RUN /home/ubuntu/miniconda/bin/conda install -y scipy
 
-RUN /home/ubuntu/miniconda/bin/conda install -y matplotlib
-
-RUN /home/ubuntu/miniconda/bin/conda install -y jupyter
-
-RUN chown -R ubuntu:ubuntu /home/ubuntu/miniconda
 
