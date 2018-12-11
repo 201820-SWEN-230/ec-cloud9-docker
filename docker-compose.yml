@@ -7,12 +7,13 @@ services:
     ports:
       - "0.0.0.0:9090:22"
       - "0.0.0.0:5000:5000"
+      - "0.0.0.0:8888:8888"
     volumes:
-      - c9home:/home
-      - /home/ubuntu/.c9
-      - /home/ubuntu/miniconda
+      - wkspace:/home/ubuntu/workspace
+      - sshdir:/home/ubuntu/.ssh
     security_opt:
       - seccomp:unconfined
 
 volumes:
-  c9home:
+ wkspace:
+ sshdir:
