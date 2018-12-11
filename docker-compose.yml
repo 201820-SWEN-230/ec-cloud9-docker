@@ -9,6 +9,8 @@ services:
       - "0.0.0.0:5000:5000"
     volumes:
       - c9home:/home
+      - /home/ubuntu/.c9
+      - /home/ubuntu/miniconda
     security_opt:
       - seccomp:unconfined
 

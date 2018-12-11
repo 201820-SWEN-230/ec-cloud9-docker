@@ -62,3 +62,4 @@ RUN echo ". /home/ubuntu/miniconda/etc/profile.d/conda.sh" >> ~ubuntu/.bashrc
 
 RUN echo ". /home/ubuntu/miniconda/bin/activate py36" >> ~ubuntu/.bashrc
 
+RUN su ubuntu -c "wget -O - https://raw.githubusercontent.com/c9/install/master/install.sh | bash"
