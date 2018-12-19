@@ -16,4 +16,5 @@ conda install -y matplotlib
 
 conda install -y jupyter
 
+conda install -y flask
 

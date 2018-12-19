@@ -5,10 +5,9 @@ Dockerfile builds a cloud9 environment from ws-cpp originally here:
 
 [ws-cpp](https://github.com/c9/templates/tree/master/ws-cpp)
 
-but slightly customized/modified in the 'ws-cust' directory
-of this repository.
+but slightly customized/modified in the 'ws-cust' directory of this repository.
 
-Before building copy public key from cloud9 IDE to 'authorized_keys' file.
+authorized_keys is a placeholder that should be replaced at runtime with the real thing.
 
 To build images first cd to ws-cust and:
 
@@ -18,15 +17,9 @@ Then back to the repo root and:
 
 docker build -t cloud9 .
 
-Then launch cloud9:
-
-Blah blah. Need to combine these. Also copy home dir to named volume to make this persistent.
-
-docker run -d -it --rm --expose 9090 -p 0.0.0.0:9090:22 --name cloud9 --security-opt seccomp:unconfined -v c9home:/newHome cloud9 bash
+Then launch the container:
 
 docker-compose up
 
-
-
-
-
+You'll want to edit the 'authorized_keys' file in the containers home directory
+to make it a "real" one. The file in the repository is just a placeholder.

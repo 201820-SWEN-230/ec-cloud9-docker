@@ -35,31 +35,27 @@ RUN echo "ubuntu:$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 
 RUN apt-get install gdbserver
 
 #
-# Now throw in some python goodies
+# use miniconda to build a robust python evironment
 #
-# RUN apt-get install -y python python-dev python-pip python-setuptools ipython \
-#     python-scipy python-matplotlib python-virtualenv virtualenvwrapper
-# 
-
-RUN apt-get install -y python3 python3-dev python3-pip python3-setuptools \
-     ipython3 python3-scipy python3-matplotlib 
- 
-RUN apt-get install -y python3.5-complete
-
-RUN pip3 install flask
 
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
 
-RUN su ubuntu -c "bash ./Miniconda3-latest-Linux-x86_64.sh -b -p /home/ubuntu/miniconda"
+USER ubuntu
 
-RUN rm ./Miniconda3-latest-Linux-x86_64.sh
+RUN bash ./Miniconda3-latest-Linux-x86_64.sh -b -p /home/ubuntu/miniconda
 
 ADD conda_create.sh .
 
-RUN su ubuntu -c "bash -v ./conda_create.sh"
+RUN bash -v ./conda_create.sh
 
 RUN echo ". /home/ubuntu/miniconda/etc/profile.d/conda.sh" >> ~ubuntu/.bashrc
 
 RUN echo ". /home/ubuntu/miniconda/bin/activate py36" >> ~ubuntu/.bashrc
 
-RUN su ubuntu -c "wget -O - https://raw.githubusercontent.com/c9/install/master/install.sh | bash"
+RUN wget -O - https://raw.githubusercontent.com/c9/install/master/install.sh | bash
+
+USER root
+
+RUN rm ./Miniconda3-latest-Linux-x86_64.sh
+
+
