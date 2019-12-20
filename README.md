@@ -11,7 +11,7 @@ authorized_keys is a placeholder that should be replaced at runtime with the rea
 
 To build images first cd to ws-cust and:
 
-docker build -t ws-cpp .
+docker build -t ws-cust .
 
 Then back to the repo root and:
 

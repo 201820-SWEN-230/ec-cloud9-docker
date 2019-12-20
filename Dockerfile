@@ -1,10 +1,10 @@
-# Build a Docker image based on the cloud9/ws-nodejs Docker image.
-FROM ws-cpp
+# Build a Docker image based on the ws-cust image (see ws-cust subdirectory)
+FROM ws-cust
 
 # Enable the Docker container to communicate with AWS Cloud9 by
 # installing SSH.
 
-RUN apt-get update && apt-get install -y openssh-server
+RUN apt-get install -y openssh-server
 
 # Ensure that Node.js is installed.
 
@@ -33,6 +33,10 @@ CMD /usr/sbin/sshd -D
 RUN echo "ubuntu:$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)" | chpasswd
 
 RUN apt-get install gdbserver
+
+RUN mkdir /gtest
+
+RUN cd /gtest/ && wget https://github.com/google/googletest/archive/master.zip && unzip master.zip && cmake ./googletest-master/ && make && make install
 
 #
 # use miniconda to build a robust python evironment
