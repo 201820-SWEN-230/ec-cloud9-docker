@@ -11,9 +11,11 @@ services:
     volumes:
       - wkspace:/home/ubuntu/workspace
       - sshdir:/home/ubuntu/.ssh
+      - c9dir:/home/ubuntu/.c9
     security_opt:
       - seccomp:unconfined
 
 volumes:
  wkspace:
  sshdir:
+ c9dir:
